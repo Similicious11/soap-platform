@@ -51,16 +51,6 @@ python3 manage.py runserver 0.0.0.0:8000
 
 Open browser: `http://localhost:8000`
 
-## 📸 Screenshots
-
-### Dashboard
-![Dashboard](docs/dashboard-screenshot.png)
-
-### Findings List
-![Findings](docs/findings-screenshot.png)
-
-### Scan History
-![Scan History](docs/scan-history-screenshot.png)
 
 ## 🔌 API Endpoints
 
