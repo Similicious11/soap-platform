@@ -1,0 +1,67 @@
+[
+  {
+    "name": "AdminAccessPolicy",
+    "arn": "arn:aws:iam::123456789:policy/AdminAccessPolicy",
+    "attached_to": ["admin-user", "admin-role"],
+    "statements": [
+      {
+        "effect": "Allow",
+        "actions": ["*"],
+        "resources": ["*"],
+        "condition": null
+      }
+    ]
+  },
+  {
+    "name": "DeveloperPolicy",
+    "arn": "arn:aws:iam::123456789:policy/DeveloperPolicy",
+    "attached_to": ["dev-team-role"],
+    "statements": [
+      {
+        "effect": "Allow",
+        "actions": [
+          "s3:*",
+          "ec2:*",
+          "rds:*"
+        ],
+        "resources": ["*"],
+        "condition": null
+      }
+    ]
+  },
+  {
+    "name": "S3ReadOnlyPolicy",
+    "arn": "arn:aws:iam::123456789:policy/S3ReadOnlyPolicy",
+    "attached_to": ["readonly-user"],
+    "statements": [
+      {
+        "effect": "Allow",
+        "actions": [
+          "s3:GetObject",
+          "s3:ListBucket"
+        ],
+        "resources": [
+          "arn:aws:s3:::company-backups/*",
+          "arn:aws:s3:::company-backups"
+        ],
+        "condition": null
+      }
+    ]
+  },
+  {
+    "name": "DataAnalystPolicy",
+    "arn": "arn:aws:iam::123456789:policy/DataAnalystPolicy",
+    "attached_to": ["analyst-role"],
+    "statements": [
+      {
+        "effect": "Allow",
+        "actions": [
+          "s3:GetObject",
+          "s3:PutObject"
+        ],
+        "resources": ["*"],
+        "condition": null
+      }
+    ]
+  }
+]

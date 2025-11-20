@@ -1,0 +1,58 @@
+[
+  {
+    "name": "company-public-website",
+    "region": "us-east-1",
+    "public_access_block": {
+      "block_public_acls": false,
+      "block_public_policy": false,
+      "ignore_public_acls": false,
+      "restrict_public_buckets": false
+    },
+    "bucket_policy": {
+      "allows_public_read": true,
+      "statement": "Allow GetObject from *"
+    },
+    "encryption": {
+      "enabled": false
+    },
+    "versioning": false,
+    "logging": false
+  },
+  {
+    "name": "company-backups",
+    "region": "us-west-2",
+    "public_access_block": {
+      "block_public_acls": true,
+      "block_public_policy": true,
+      "ignore_public_acls": true,
+      "restrict_public_buckets": true
+    },
+    "bucket_policy": {
+      "allows_public_read": false
+    },
+    "encryption": {
+      "enabled": false
+    },
+    "versioning": true,
+    "logging": true
+  },
+  {
+    "name": "company-private-data",
+    "region": "us-east-1",
+    "public_access_block": {
+      "block_public_acls": true,
+      "block_public_policy": true,
+      "ignore_public_acls": true,
+      "restrict_public_buckets": true
+    },
+    "bucket_policy": {
+      "allows_public_read": false
+    },
+    "encryption": {
+      "enabled": true,
+      "kms_key": "arn:aws:kms:us-east-1:123456789:key/abc-123"
+    },
+    "versioning": true,
+    "logging": true
+  }
+]

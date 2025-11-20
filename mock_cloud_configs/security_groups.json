@@ -1,0 +1,70 @@
+[
+  {
+    "id": "sg-12345",
+    "name": "web-server-sg",
+    "vpc_id": "vpc-abc123",
+    "description": "Security group for web servers",
+    "ingress_rules": [
+      {
+        "port": 80,
+        "protocol": "tcp",
+        "source": "0.0.0.0/0",
+        "description": "HTTP from anywhere"
+      },
+      {
+        "port": 443,
+        "protocol": "tcp",
+        "source": "0.0.0.0/0",
+        "description": "HTTPS from anywhere"
+      }
+    ]
+  },
+  {
+    "id": "sg-67890",
+    "name": "database-sg",
+    "vpc_id": "vpc-abc123",
+    "description": "Security group for databases",
+    "ingress_rules": [
+      {
+        "port": 3306,
+        "protocol": "tcp",
+        "source": "0.0.0.0/0",
+        "description": "MySQL from anywhere - MISCONFIGURED!"
+      }
+    ]
+  },
+  {
+    "id": "sg-11111",
+    "name": "admin-sg",
+    "vpc_id": "vpc-abc123",
+    "description": "Administrative access",
+    "ingress_rules": [
+      {
+        "port": 22,
+        "protocol": "tcp",
+        "source": "0.0.0.0/0",
+        "description": "SSH from anywhere - INSECURE!"
+      },
+      {
+        "port": 3389,
+        "protocol": "tcp",
+        "source": "0.0.0.0/0",
+        "description": "RDP from anywhere - INSECURE!"
+      }
+    ]
+  },
+  {
+    "id": "sg-22222",
+    "name": "app-server-sg",
+    "vpc_id": "vpc-abc123",
+    "description": "Application servers - Properly configured",
+    "ingress_rules": [
+      {
+        "port": 8080,
+        "protocol": "tcp",
+        "source": "10.0.0.0/8",
+        "description": "App port from internal network"
+      }
+    ]
+  }
+]

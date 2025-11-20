@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan History - SOAP Platform</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        header { background: white; padding: 20px 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        h1 { color: #667eea; font-size: 32px; margin-bottom: 5px; }
+        .subtitle { color: #666; font-size: 14px; }
+        .nav-links { margin-top: 15px; }
+        .nav-links a { color: #667eea; text-decoration: none; margin-right: 20px; font-weight: 500; }
+        .nav-links a:hover { text-decoration: underline; }
+        .content-section { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h2 { color: #333; font-size: 24px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #f0f0f0; }
+        .scans-table { width: 100%; border-collapse: collapse; }
+        .scans-table th { background: #f8f9fa; padding: 12px; text-align: left; font-weight: 600; color: #666; font-size: 13px; text-transform: uppercase; }
+        .scans-table td { padding: 15px 12px; border-bottom: 1px solid #f0f0f0; color: #333; }
+        .scans-table tr:hover { background: #f8f9fa; }
+        .scan-id { font-weight: bold; color: #667eea; font-size: 18px; }
+        .severity-mini { display: inline-block; width: 50px; text-align: center; padding: 4px 8px; border-radius: 4px; font-weight: 600; font-size: 12px; margin: 0 2px; }
+        .severity-mini.critical { background: #dc3545; color: white; }
+        .severity-mini.high { background: #fd7e14; color: white; }
+        .severity-mini.medium { background: #ffc107; color: #333; }
+        .severity-mini.low { background: #28a745; color: white; }
+        .total-findings { font-size: 24px; font-weight: bold; color: #667eea; }
+        .duration { color: #666; font-size: 14px; }
+        .timestamp { color: #666; font-size: 13px; }
+        .empty-state { text-align: center; padding: 60px 20px; color: #666; }
+        .empty-state-icon { font-size: 64px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛡️ SOAP Platform</h1>
+            <p class="subtitle">Security Operations Automation Platform - Scan History</p>
+            <div class="nav-links">
+                <a href="/">Dashboard</a>
+                <a href="/findings/">All Findings</a>
+                <a href="/scans/">Scan History</a>
+                <a href="/api/">REST API</a>
+            </div>
+        </header>
+        
+        <div class="content-section">
+            <h2>📅 Scan History ({{ scans|length }} total scans)</h2>
+            
+            {% if scans %}
+            <table class="scans-table">
+                <thead>
+                    <tr>
+                        <th>Scan ID</th>
+                        <th>Timestamp</th>
+                        <th>Duration</th>
+                        <th>Total Findings</th>
+                        <th>Severity Breakdown</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for scan in scans %}
+                    <tr>
+                        <td><span class="scan-id">#{{ scan.id }}</span></td>
+                        <td><span class="timestamp">{{ scan.timestamp|date:"Y-m-d H:i:s" }}</span></td>
+                        <td><span class="duration">{% if scan.duration_seconds %}{{ scan.duration_seconds|floatformat:2 }}s{% else %}N/A{% endif %}</span></td>
+                        <td><span class="total-findings">{{ scan.total_findings }}</span></td>
+                        <td>
+                            <span class="severity-mini critical">🔴 {{ scan.critical_count }}</span>
+                            <span class="severity-mini high">🟠 {{ scan.high_count }}</span>
+                            <span class="severity-mini medium">🟡 {{ scan.medium_count }}</span>
+                            <span class="severity-mini low">🟢 {{ scan.low_count }}</span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <div class="empty-state">
+                <div class="empty-state-icon">🔍</div>
+                <h3>No Scans Yet</h3>
+                <p>Run your first security scan to see the history here!</p>
+                <p><code>python3 cloud_scanner.py</code></p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+[
+  {
+    "name": "production-db",
+    "engine": "mysql",
+    "engine_version": "8.0.32",
+    "instance_class": "db.t3.medium",
+    "region": "us-east-1",
+    "publicly_accessible": true,
+    "encryption": {
+      "enabled": false
+    },
+    "backup_retention_days": 3,
+    "multi_az": false,
+    "auto_minor_version_upgrade": true
+  },
+  {
+    "name": "analytics-db",
+    "engine": "postgresql",
+    "engine_version": "14.7",
+    "instance_class": "db.r5.large",
+    "region": "us-west-2",
+    "publicly_accessible": false,
+    "encryption": {
+      "enabled": false
+    },
+    "backup_retention_days": 7,
+    "multi_az": true,
+    "auto_minor_version_upgrade": true
+  },
+  {
+    "name": "dev-database",
+    "engine": "mysql",
+    "engine_version": "8.0.32",
+    "instance_class": "db.t3.micro",
+    "region": "us-east-1",
+    "publicly_accessible": false,
+    "encryption": {
+      "enabled": true,
+      "kms_key": "arn:aws:kms:us-east-1:123456789:key/xyz-789"
+    },
+    "backup_retention_days": 7,
+    "multi_az": false,
+    "auto_minor_version_upgrade": true
+  }
+]
