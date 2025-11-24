@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 """
 Security Operations Automation Platform (SOAP)
-Core Automation Engine - Weekend Project Version
+Core Automation Engine 
 
-Author: Your Name
-Purpose: ICE Cybersecurity Automation Internship Portfolio Project
 """
 
 import json
