@@ -83,8 +83,8 @@ MIT License
 ## 👤 Author
 
 Simran Vaz
-- GitHub: [@YOUR_USERNAME](https://github.com/Similicious11)
-- LinkedIn: [Your Profile](https://www.linkedin.com/in/simran-vaz/)
+- GitHub: (https://github.com/Similicious11)
+- LinkedIn:(https://www.linkedin.com/in/simran-vaz/)
 
 ---
 
