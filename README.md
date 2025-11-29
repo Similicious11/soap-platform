@@ -33,7 +33,7 @@ Built as a portfolio project for cybersecurity automation roles, SOAP Platform d
 ### Installation
 ```bash
 # Clone repository
-git clone https://github.com/YOUR_USERNAME/soap-platform.git
+git clone https://github.com/Similicious11/soap-platform.git
 cd soap-platform
 
 # Install dependencies
